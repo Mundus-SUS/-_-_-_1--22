@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>лаба 1</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Расшифровка</h1>
+
+      <section class="imputText">
+        <textarea
+          id="inputText"
+          placeholder="Введите зашифроманый текст..."
+        ></textarea>
+      </section>
+
+      <button id="decodButton" type="button">Расшифровка</button>
+
+      <section class="decodResults">
+        <div class="textContainer">
+          <h2>Исходный текст:</h2>
+          <div id="originalText" class="textBlock"></div>
+        </div>
+        <div class="textContainer">
+          <h2>Расшифрованный текст:</h2>
+          <div id="decodText" class="textBlock"></div>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
