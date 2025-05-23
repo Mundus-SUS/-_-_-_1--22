@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html>
   <head>
     <title>лаба 1</title>
@@ -7,25 +7,19 @@
   </head>
   <body>
     <div class="container">
-      <h1>Расшифровка</h1>
-
-      <section class="imputText">
-        <textarea
-          id="inputText"
-          placeholder="Введите зашифроманый текст..."
-        ></textarea>
-      </section>
-
-      <button id="decodButton" type="button">Расшифровка</button>
-
-      <section class="decodResults">
-        <div class="textContainer">
-          <h2>Исходный текст:</h2>
-          <div id="originalText" class="textBlock"></div>
+      <h1>Дешифратор ROT13</h1>
+      <section class="text-section">
+        <div class="input-encode-block">
+          <h2>Зашифрованный текст</h2>
+          <textarea
+            id="input-encode-text"
+            placeholder="Введите зашифроманый текст..."
+          ></textarea>
         </div>
-        <div class="textContainer">
+
+        <div class="output-decode-block">
           <h2>Расшифрованный текст:</h2>
-          <div id="decodText" class="textBlock"></div>
+          <p id="output-decode-text"></p>
         </div>
       </section>
     </div>
