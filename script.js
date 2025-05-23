@@ -53,56 +53,53 @@ let alphabet = [
   "z",
 ];
 
-function textDecod(text) {
-  let result = "";
+function textDecode(inputEncodeText) {
+  let decodeResult = "";
 
   // проходимся по введеному тексту
-  for (let i = 0; i < text.length; i++) {
-    let symbol = text[i];
-    let check = false;
+  for (let i = 0; i < inputEncodeText.length; i++) {
+    let symbolOfInputText = inputEncodeText[i];
+    let checkAlphabetSymbol = false;
 
-    // Проверяем наличие символа в алфавите
+    // Проверяем наличие символа в массиве с алфавитом
     for (let j = 0; j < alphabet.length; j++) {
-      if (symbol === alphabet[j]) {
-        check = true;
+      if (symbolOfInputText === alphabet[j]) {
+        checkAlphabetSymbol = true;
         // преврка заглавных
         let bigSymbol = j < 26;
 
         // индекс после отступа
-        let newIndex;
+        let newSymbolIndex;
         if (bigSymbol) {
           // заглавные
-          newIndex = (j - 13 + 26) % 26;
+          newSymbolIndex = (j - 13 + 26) % 26; // минусуем 13 для дешифровки, плюсуем 26 чтобы избежать минусового индекса,
+          // берем остаток от деления на 26 чтобы не получить индекс строчной буквы(26-51)
         } else {
           // строчные
-          newIndex = 26 + ((j - 26 - 13 + 26) % 26);
+          newSymbolIndex = 26 + ((j - 26 - 13 + 26) % 26);
         }
 
-        result += alphabet[newIndex];
+        decodeResult += alphabet[newSymbolIndex];
       }
     }
 
-    // для не алфавитных символов
-    if (!check) {
-      result += symbol;
+    // для не буков
+    if (!checkAlphabetSymbol) {
+      decodeResult += symbolOfInputText;
     }
   }
 
-  return result;
+  return decodeResult;
 }
 
-let decodButton = document.getElementById("decodButton");
-let inputText = document.getElementById("inputText");
-let originalText = document.getElementById("originalText");
-let decodText = document.getElementById("decodText");
+let inputText = document.getElementById("input-encode-text");
+let outputDecodeText = document.getElementById("output-decode-text");
 
-decodButton.addEventListener("click", function () {
-  // получtv вводимый текст
-  let text = inputText.value;
+inputText.addEventListener("change", function () {
+  //запуск функции при вводе текста в форму
+  // получtv вводимый текст для функцци
+  let inputEncodeText = inputText.value;
 
-  // вывод исходника
-  originalText.innerHTML = text;
-
-  // вывод расшифрованного
-  decodText.innerHTML = textDecod(text);
+  // вывод расшифрки
+  outputDecodeText.innerHTML = textDecode(inputEncodeText);
 });
